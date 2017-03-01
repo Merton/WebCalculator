@@ -13,9 +13,14 @@ getHomeR = defaultLayout $ do
         <p>
             <a href=@{AddR 5 7}>HTML addition
         <p>
+            <a href=@{AddR 5 7}?_accept=application/json>JSON addition
+        <p>
             <a href=@{SubtractR 5 7}>HTML subtraction
+        <p>
+            <a href=@{SubtractR 5 7}?_accept=application/json>JSON subtraction
         <p>
             <a href=@{MultiplyR 5 7}>HTML multiplication
         <p>
-            <a href=@{AddR 5 7}?_accept=application/json>JSON addition
+            <a href=@{MultiplyR 5 7}?_accept=application/json>JSON multiply
+
     |]
