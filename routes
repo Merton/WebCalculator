@@ -1,0 +1,3 @@
+/              HomeR GET
+/add/#Int/#Int AddR  GET
+/multiply/#Int/#Int MultiplyR GET
