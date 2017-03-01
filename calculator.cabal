@@ -10,6 +10,7 @@ executable          calculator
                     Foundation
 
                     Add
+                    Subtract
                     Multiply
                     Home
 
