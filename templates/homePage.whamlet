@@ -1,0 +1,25 @@
+<h1> Basic Operations using Haskell Backend, delivered in JSON and HTML </h1>
+
+<h2> Addition </h2>
+<p>
+    <a href=@{AddR 5 7}>HTML
+<p>
+    <a href=@{AddR 5 7}?_accept=application/json>JSON
+
+<h2> Subtraction </h2>
+<p>
+    <a href=@{SubtractR 5 7}>HTML
+<p>
+    <a href=@{SubtractR 5 7}?_accept=application/json>JSON
+
+<h2> Multiplication </h2>
+<p>
+    <a href=@{MultiplyR 5 7}>HTML
+<p>
+    <a href=@{MultiplyR 5 7}?_accept=application/json>JSON
+
+<h2> Division </h2>
+<p>
+    <a href=@{DivideR 5 7}>HTML
+<p>
+    <a href=@{DivideR 5 7}?_accept=application/json>JSON

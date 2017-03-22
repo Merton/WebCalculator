@@ -9,9 +9,12 @@ executable          calculator
   other-modules:    Application
                     Foundation
 
+                    CalcStructure
+                    
                     Add
                     Subtract
                     Multiply
+                    Divide
                     Home
 
   ghc-options:      -Wall -fwarn-tabs -O2
