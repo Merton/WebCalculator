@@ -5,6 +5,7 @@ module Home where
 
 import Foundation
 import Yesod.Core
+import DBConnection
 
 getHomeR :: Handler Html
 getHomeR = defaultLayout $ do
