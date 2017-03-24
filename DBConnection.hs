@@ -5,31 +5,42 @@ module DBConnection where
 import Control.Applicative
 import qualified Data.Text as T
 import Database.SQLite.Simple
-import Database.SQLite.Simple.FromRow
 import CalcStructure
+import Data.Foldable (forM_)
 
-instance FromRow Calculation where
-  fromRow = Calculation <$> field <*> field <*> field <*> field
+dbPath :: String
+dbPath = "calculations.db"
 
-instance ToRow Calculation where
-  toRow (Calculation firstOp operator secondOp result) = toRow (firstOp, operator, secondOp, result)
-{-
-insertRecord :: Calculation -> IO (Maybe String)
-insertRecord (x o y z) = insertRow dbHandler calculations newRecord
-  where dbHandler = openConnection calculationsDB
-  -}
-    {-    newRecord = Row [(),("firstOp",x),("Operator", o),("secondOp",y),("result",z)]
--}
 
 insertRecord :: Calculation -> IO ()
-insertRecord (Calculation x o y z) = do
-  conn <- open "calculations.db"
-  execute conn "INSERT INTO calculations (firstOp, operator, secondOp, result) VALUES (?,?,?,?)" (Calculation x o y z)
-  rowId <- lastInsertRowId conn
+insertRecord c = do
+  conn <- open dbPath
+  execute conn "INSERT INTO calculations (firstOp, operator, secondOp, result) VALUES (?,?,?,?)"  (c :: Calculation)
   close conn
 
-initialiseDB :: String -> IO ()
-initialiseDB db = do
-  conn <- open db
-  execute_ conn "CREATE TABLE IF NOT EXISTS calculations (id INTEGER PRIMARY KEY, firstOp INTEGER, operator TEXT, secondOp INTEGER, result INTEGER)"
+getRecords :: IO [Calculation]
+getRecords = do
+  conn <- open dbPath
+  cs <- query_ conn "SELECT * from calculations" :: IO [Calculation]
+  close conn
+  return cs
+
+getRecord :: Int -> IO [Calculation]
+getRecord i = do
+  conn <- open dbPath
+  c <- query conn "SELECT firstOp, operator, secondOp, result from calculations WHERE operator = ?" (Only("+" :: String)) :: IO [Calculation]
+  close conn
+  return c
+
+
+initialiseDB :: IO ()
+initialiseDB = do
+  conn <- open dbPath
+  execute_ conn "CREATE TABLE IF NOT EXISTS calculations (firstOp INTEGER, operator TEXT, secondOp INTEGER, result INTEGER)"
+  close conn
+
+deleteDB :: IO ()
+deleteDB = do
+  conn <- open dbPath
+  execute_ conn "DROP TABLE calculations"
   close conn

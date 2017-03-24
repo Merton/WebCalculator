@@ -13,6 +13,6 @@ import Subtract
 import Multiply
 import Divide
 import Home
-
+import Calculations
 
 mkYesodDispatch "App" resourcesApp
