@@ -14,6 +14,7 @@ result :: Int
 } deriving (Generic, Show)
 
 instance ToJSON Calculation
+instance FromJSON Calculation
 
 instance FromRow Calculation where
   fromRow = Calculation <$> field <*> field <*> field <*> field
