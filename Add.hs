@@ -13,7 +13,7 @@ getAddR x y = selectRep $ do
         setTitle "Addition"
         [whamlet|#{x} + #{y} = #{z}|]
     provideJson $ c
-    insertRecord $ c
+    insertRecord c
   where
     z = x + y
     c = (Calculation x "+" y z)

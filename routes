@@ -1,5 +1,6 @@
-/                   HomeR     GET
-/add/#Int/#Int      AddR      GET
-/subtract/#Int/#Int SubtractR GET
-/multiply/#Int/#Int MultiplyR GET
-/divide/#Int/#Int   DivideR   GET
+/                   HomeR         GET
+/add/#Int/#Int      AddR          GET
+/subtract/#Int/#Int SubtractR     GET
+/multiply/#Int/#Int MultiplyR     GET
+/divide/#Int/#Int   DivideR       GET
+/calculations       CalculationsR GET POST

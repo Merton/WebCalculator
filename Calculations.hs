@@ -8,9 +8,10 @@ import CalcStructure
 import DBConnection
 
 
-postCalculationsR :: Calculation -> Handler TypedContent
-postCalculationsR c = do
-  provideRep $ defaultLayout $ do
+getCalculationsR :: Handler TypedContent
+getCalculationsR = do
+  provideRep $ defaultLayout $ return
       setTitle "Calculations"
-      [whamlet|#{x} + #{y} = #{z}|]
-  provideJson $ c
+  provideJson calculations
+    where
+      calculations = getRecords 
