@@ -15,6 +15,7 @@ executable          calculator
                     Multiply
                     Divide
                     Home
+                    Calculations
 
   ghc-options:      -Wall -fwarn-tabs -O2
 

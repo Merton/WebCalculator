@@ -40,9 +40,9 @@ deleteDB = do
   execute_ conn "DROP TABLE calculations"
   close conn
 
-  getRecord :: Int -> IO [Calculation]
-  getRecord i = do
-    conn <- open dbPath
-    c <- query conn "SELECT firstOp, operator, secondOp, result from calculations WHERE operator = ?" (Only("+" :: String)) :: IO [Calculation]
-    close conn
-    return c
+getRecord :: Int -> IO [Calculation]
+getRecord i = do
+  conn <- open dbPath
+  c <- query conn "SELECT firstOp, operator, secondOp, result from calculations WHERE operator = ?" (Only("+" :: String)) :: IO [Calculation]
+  close conn
+  return c
