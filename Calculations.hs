@@ -7,11 +7,13 @@ import Yesod.Core
 import CalcStructure
 import DBConnection
 
-
+{-
 getCalculationsR :: Handler TypedContent
-getCalculationsR = do
-  provideRep $ defaultLayout $ return
-      setTitle "Calculations"
-  provideJson calculations
-    where
-      calculations = getRecords 
+getCalculationsR = selectRep $ do
+    provideRep $ defaultLayout $ do
+        setTitle "Calculations"
+    provideJson $ c
+  where
+
+    c = liftIO (getRecords)
+-}
