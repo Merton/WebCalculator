@@ -5,15 +5,16 @@ module Add where
 import Foundation
 import Yesod.Core
 import CalcStructure
-import DBConnection
+import DBConnection (insertRecord)
 
 getAddR :: Int -> Int -> Handler TypedContent
-getAddR x y = selectRep $ do
+getAddR x y = do
+  liftIO (insertRecord c)
+  selectRep $ do
     provideRep $ defaultLayout $ do
         setTitle "Addition"
-        [whamlet|#{x} + #{y} = #{z}|]
+        [whamlet|<p> The result of the calculation is: </p> #{x} + #{y} = #{z}|]
     provideJson $ c
-    insertRecord c
   where
     z = x + y
     c = (Calculation x "+" y z)
