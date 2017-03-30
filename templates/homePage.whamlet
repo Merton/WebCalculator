@@ -1,5 +1,7 @@
 <h1> Basic Operations using Haskell Backend, delivered in JSON and HTML </h1>
 
+<h2> <a href=@{CalculationsR}> View All Performed Calculations </h1>
+
 <h2> Addition </h2>
 <p>
     <a href=@{AddR 5 7}>HTML
@@ -20,6 +22,6 @@
 
 <h2> Division </h2>
 <p>
-    <a href=@{DivideR 5 7}>HTML
+    <a href=@{DivideR 10 5}>HTML
 <p>
-    <a href=@{DivideR 5 7}?_accept=application/json>JSON
+    <a href=@{DivideR 10 5}?_accept=application/json>JSON
