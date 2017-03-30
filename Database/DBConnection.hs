@@ -2,19 +2,16 @@
 
 module Database.DBConnection where
 
---import Control.Applicative
---import qualified Data.Text as T
 import Database.SQLite.Simple
 import CalcStructure
---import Data.Foldable (forM_)
 
 dbPath :: String
-dbPath = "calculations.db"
+dbPath = "Database/calculations.db"
 
 insertRecord :: Calculation -> IO ()
 insertRecord c = do
   conn <- open dbPath
-  initialiseDB conn
+  execute_ conn "CREATE TABLE IF NOT EXISTS calculations (firstOp INTEGER, operator TEXT, secondOp INTEGER, result INTEGER)"
 --  rowId <- lastInsertRowId conn
   execute conn "INSERT INTO calculations (firstOp, operator, secondOp, result) VALUES (?,?,?,?)" (c :: Calculation)
   close conn
@@ -27,9 +24,11 @@ getRecords = do
   --print cs -- test purposes
   return cs
 
-initialiseDB :: Connection -> IO ()
-initialiseDB conn = do
+initialiseDB :: IO ()
+initialiseDB  = do
+  conn <- open dbPath
   execute_ conn "CREATE TABLE IF NOT EXISTS calculations (firstOp INTEGER, operator TEXT, secondOp INTEGER, result INTEGER)"
+  close conn
 
 deleteDB :: IO ()
 deleteDB = do

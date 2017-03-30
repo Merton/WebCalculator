@@ -11,6 +11,7 @@ getCalculationsR :: Handler TypedContent
 getCalculationsR = selectRep $ do
     provideRep $ defaultLayout $ do
         setTitle "Calculations"
+        liftIO (initialiseDB)
         calculations <- liftIO (getRecords)
         [whamlet|
         $if null calculations
