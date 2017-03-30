@@ -10,4 +10,4 @@ import Yesod.Core
 getHomeR :: Handler Html
 getHomeR = defaultLayout $ do
     setTitle "Minimal Multifile"
-    $(whamletFile "templates/homePage.whamlet")
+    $(whamletFile "templates/homePage.html")
