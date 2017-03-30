@@ -3,17 +3,19 @@
 module Calculations where
 
 import Foundation
-import Yesod.Core
-import CalcStructure
+import Yesod
 import DBConnection
 
-{-
+
 getCalculationsR :: Handler TypedContent
 getCalculationsR = selectRep $ do
     provideRep $ defaultLayout $ do
         setTitle "Calculations"
-    provideJson $ c
-  where
-
-    c = liftIO (getRecords)
--}
+        calculations <- liftIO (getRecords)
+        [whamlet|
+        $if null calculations
+            <p> No Calculations <p>
+        $else
+            <ol>
+                $forall calculation <- calculations
+                    <li>#{calculation} |]
