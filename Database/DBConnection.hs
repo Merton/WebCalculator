@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module DBConnection where
+module Database.DBConnection where
 
 --import Control.Applicative
 --import qualified Data.Text as T
