@@ -9,13 +9,13 @@ executable          webcalculator
   other-modules:    Application
                     Foundation
                     CalcStructure
-                    DBConnection
-                    Add
-                    Subtract
-                    Multiply
-                    Divide
-                    Home
-                    Calculations
+                    Database.DBConnection
+                    Handler.Add
+                    Handler.Subtract
+                    Handler.Multiply
+                    Handler.Divide
+                    Handler.Home
+                    Handler.Calculations
 
   ghc-options:      -Wall -fwarn-tabs -O2
 
@@ -29,3 +29,4 @@ executable          webcalculator
 
 
   ghc-options:    -threaded -O2 -rtsopts -with-rtsopts=-N
+  

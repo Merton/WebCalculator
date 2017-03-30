@@ -8,11 +8,11 @@ module Application where
 import Foundation
 import Yesod.Core
 
-import Add
-import Subtract
-import Multiply
-import Divide
-import Home
-import Calculations
+import Handler.Add
+import Handler.Subtract
+import Handler.Multiply
+import Handler.Divide
+import Handler.Home
+import Handler.Calculations
 
 mkYesodDispatch "App" resourcesApp
