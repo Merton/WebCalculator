@@ -17,37 +17,30 @@ calculationsTable = mempty
   ++ Table.int "Second Operator"  (secondOp)
   ++ Table.int "Result"           (result)
 -}
-getCalculationsR :: Handler TypedContent
-getCalculationsR = selectRep $ do
-    provideRep $ defaultLayout $ do
-        setTitle "Calculations"
-        liftIO (initialiseDB)
-        calculations <- liftIO (getRecords)
-        --Table.buildBootstrap calculationsTable [ Calculation 5 "+" 10 15, Calculation 2 "*" 3 6]
-        [whamlet|
-        $if null calculations
-          <h2> No calculations have been made! <h2>
-        $else
-          <table>
-            <thead>
+getCalculationsR :: Handler Html
+getCalculationsR = do
+  liftIO (initialiseDB)
+  calculations <- liftIO (getRecords)
+  defaultLayout $ do
+      setTitle "Calculations"
+      addStylesheetRemote "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      [whamlet|
+      $if null calculations
+        <h2> No calculations have been made! <h2>
+      $else
+        <h1> Every calculation in history </h1>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>First Operator</th>
+              <th>Operator</th>
+              <th>Second Operator</th>
+              <th>Result</th>
+          <tbody>
+            $forall c <- calculations
               <tr>
-                <th>First Operator</th>
-                <th>Operator</th>
-                <th>Second Operator</th>
-                <th>Result</th>
-            <tbody>
-              $forall c <- calculations
-                <tr>
-                  <td>#{firstOp c}
-                  <td>#{operator c}
-                  <td>#{secondOp c}
-                  <td>#{result c}
-|]
-               {-
-        $if null calculations
-            <p> No Calculations <p>
-        $else
-            <ol>
-                $forall calculation <- calculations
-                    <li>#{calculation} |]
-                    -}
+                <td>#{firstOp c}
+                <td>#{operator c}
+                <td>#{secondOp c}
+                <td>#{result c}
+      |]

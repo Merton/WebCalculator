@@ -29,4 +29,3 @@ executable          webcalculator
 
 
   ghc-options:    -threaded -O2 -rtsopts -with-rtsopts=-N
-  
