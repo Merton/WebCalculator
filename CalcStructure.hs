@@ -7,10 +7,10 @@ import GHC.Generics
 import Database.SQLite.Simple
 import Text.Blaze
 data Calculation = Calculation {
-firstOp :: Int,
-operator :: String,
-secondOp :: Int,
-result :: Int
+  firstOp :: Int,
+  operator :: String,
+  secondOp :: Int,
+  result :: Int
 } deriving (Generic, Show)
 
 instance ToJSON Calculation
