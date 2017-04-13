@@ -28,13 +28,13 @@ getCalculationsR = do
       $if null calculations
         <h2> No calculations have been made! <h2>
       $else
-        <h1> Every calculation in history </h1>
+        <h1> Every calculation ever made.</h1>
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>First Operator</th>
+              <th>First Operand</th>
               <th>Operator</th>
-              <th>Second Operator</th>
+              <th>Second Operand</th>
               <th>Result</th>
           <tbody>
             $forall c <- calculations
@@ -44,3 +44,13 @@ getCalculationsR = do
                 <td>#{secondOp c}
                 <td>#{result c}
       |]
+{-
+postCalculationsR :: Calculation -> Handler TypedContent
+postCalculationsR (Calculation x o y z) = do
+  liftIO $ insertRecord (Calculation x o y z)
+  selectRep $ do
+    provideRep $ defaultLayout $ do
+      setTitle "New Calculation Added"
+      [whamlet|<p> The new calculation is: </p> #{x} #{o} #{y} = #{z}|]
+    provideJson $ (Calculation x o y z)
+-}
