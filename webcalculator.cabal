@@ -22,7 +22,8 @@ executable          webcalculator
   build-depends:  base
                 , yesod
                 , yesod-core
-                , yesod-table
+                , yesod-auth
+                , network
                 , text
                 , sqlite-simple
                 , blaze-markup

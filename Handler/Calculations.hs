@@ -17,7 +17,7 @@ calculationsTable = mempty
   ++ Table.int "Second Operator"  (secondOp)
   ++ Table.int "Result"           (result)
 -}
-getCalculationsR :: Handler Html
+getCalculationsR :: Handler Html  
 getCalculationsR = do
   liftIO (initialiseDB)
   calculations <- liftIO (getRecords)
