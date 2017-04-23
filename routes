@@ -4,4 +4,4 @@
 /multiply/#Int/#Int MultiplyR     GET
 /divide/#Int/#Int   DivideR       GET
 /calculations       CalculationsR GET
-/auth AuthR Auth getAuth
+/auth               AuthR Auth    getAuth

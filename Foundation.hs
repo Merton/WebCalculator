@@ -7,13 +7,13 @@
 module Foundation where
 
 import Yesod
-import Yesod.Core
 import Yesod.Auth
-import Network.HTTP.Client.Conduit (Manager, newManager)
+import Network.HTTP.Client.Conduit (Manager)
 import           Data.Default                (def)
 import           Data.Text                   (Text)
 import           Yesod.Auth.BrowserId
 import           Yesod.Auth.GoogleEmail2
+
 data App = App
     { httpManager :: Manager
     }

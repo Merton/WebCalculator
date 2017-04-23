@@ -8,7 +8,7 @@ module Handler.Home where
 
 import           Yesod
 import           Yesod.Auth
-import Foundation
+import           Foundation
 
 getHomeR :: Handler Html
 getHomeR = do

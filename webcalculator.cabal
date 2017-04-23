@@ -22,7 +22,7 @@ executable          webcalculator
   build-depends:  base
                 , yesod
                 , yesod-core
-                , yesod-auth
+                , yesod-auth >= 1.4.16
                 , network
                 , text
                 , sqlite-simple
