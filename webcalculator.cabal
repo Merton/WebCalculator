@@ -27,6 +27,8 @@ executable          webcalculator
                 , text
                 , sqlite-simple
                 , blaze-markup
+                , http-conduit
+                , data-default
 
 
   ghc-options:    -threaded -O2 -rtsopts -with-rtsopts=-N

@@ -2,5 +2,8 @@ import Application () -- for YesodDispatch instance
 import Foundation
 import Yesod.Core
 
+
 main :: IO ()
-main = warp 3000 App
+main = do
+    man <- newManager
+    warp 3000 $ App man

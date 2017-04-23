@@ -6,8 +6,8 @@ import Foundation
 import Yesod
 import Database.DBConnection
 import CalcStructure
-import Yesod.Table (Table)
-import qualified Yesod.Table as Table
+--import Yesod.Table (Table)
+--import qualified Yesod.Table as Table
 
 {-
 calculationsTable :: Table site Calculation
@@ -17,7 +17,7 @@ calculationsTable = mempty
   ++ Table.int "Second Operator"  (secondOp)
   ++ Table.int "Result"           (result)
 -}
-getCalculationsR :: Handler Html  
+getCalculationsR :: Handler Html
 getCalculationsR = do
   liftIO (initialiseDB)
   calculations <- liftIO (getRecords)
