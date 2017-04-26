@@ -23,6 +23,8 @@ executable          webcalculator
                 , yesod
                 , yesod-core
                 , yesod-table
+                , yesod-form
+                , time
                 , text
                 , sqlite-simple
                 , blaze-markup

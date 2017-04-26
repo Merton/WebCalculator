@@ -44,6 +44,7 @@ getCalculationsR = do
                 <td>#{secondOp c}
                 <td>#{result c}
       |]
+      
 {-
 postCalculationsR :: Calculation -> Handler TypedContent
 postCalculationsR (Calculation x o y z) = do
