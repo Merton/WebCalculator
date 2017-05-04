@@ -24,6 +24,7 @@ executable          webcalculator
                 , yesod-core
                 , yesod-table
                 , yesod-form
+                , yesod-static
                 , time
                 , text
                 , sqlite-simple
