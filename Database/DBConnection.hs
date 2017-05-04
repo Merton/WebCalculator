@@ -21,7 +21,13 @@ getRecords = do
   conn <- open dbPath
   cs <- query_ conn "SELECT * from calculations" :: IO [Calculation]
   close conn
-  --print cs -- test purposes
+  return cs
+
+getAllOperator :: String -> IO [Calculation]
+getAllOperator op = do
+  conn <- open dbPath
+  cs <- query conn "SELECT firstOp, operator, secondOp, result from calculations WHERE operator = ?" (Only(op :: String)) :: IO [Calculation]
+  close conn
   return cs
 
 initialiseDB :: IO ()
