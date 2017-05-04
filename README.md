@@ -33,6 +33,12 @@ You can use the same idea with subtract, multiply and divide:
 /divide/Int/Int
 ```
 Every time you carry out an operation, it gets saved to a database. To see your calculations for a specific operator, don't put the two integers after the operator, eg `/add`, this will display a table of all the additions that have been carried out.
+```
+/add
+/subtract
+/multiply
+/divide
+```
 Incidentally, if you wish to view every calculation for all the operators, you can, simply go to `/calculations` and it will display all the calculations, neat!
 
 ### HTML & JSON?
