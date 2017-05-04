@@ -5,7 +5,7 @@ module Handler.Add where
 import Foundation
 import Yesod.Core
 import CalcStructure
-import Database.DBConnection (insertRecord, getAllOperator)
+import Database.DBConnection (initialiseDB,insertRecord, getAllOperator)
 
 getAddR :: Int -> Int -> Handler TypedContent
 getAddR x y = do
@@ -39,6 +39,7 @@ getAddR x y = do
 
 getAllAddR :: Handler TypedContent
 getAllAddR = do
+  liftIO (initialiseDB)
   calculations <- liftIO (getAllOperator "+")
   selectRep $ do
     provideRep $ defaultLayout $ do

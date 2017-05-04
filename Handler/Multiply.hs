@@ -5,10 +5,11 @@ module Handler.Multiply where
 import Foundation
 import Yesod.Core
 import CalcStructure
-import Database.DBConnection (insertRecord, getAllOperator)
+import Database.DBConnection (initialiseDB,insertRecord, getAllOperator)
 
 getMultiplyR :: Int -> Int -> Handler TypedContent
 getMultiplyR x y = do
+  liftIO (initialiseDB)
   liftIO (insertRecord c)
   selectRep $ do
     provideRep $ defaultLayout $ do

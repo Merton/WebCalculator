@@ -5,10 +5,11 @@ module Handler.Subtract where
 import Foundation
 import Yesod.Core
 import CalcStructure
-import Database.DBConnection (insertRecord, getAllOperator)
+import Database.DBConnection (initialiseDB,insertRecord, getAllOperator)
 
 getSubtractR :: Int -> Int -> Handler TypedContent
 getSubtractR x y = do
+  liftIO (initialiseDB)
   liftIO (insertRecord c)
   selectRep $ do
     provideRep $ defaultLayout $ do

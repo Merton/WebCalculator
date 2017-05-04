@@ -5,10 +5,11 @@ module Handler.Divide where
 import Foundation
 import Yesod.Core
 import CalcStructure
-import Database.DBConnection (insertRecord, getAllOperator)
+import Database.DBConnection (initialiseDB,insertRecord, getAllOperator)
 
 getDivideR :: Int -> Int -> Handler TypedContent
 getDivideR x y = do
+  liftIO (initialiseDB)
   liftIO (insertRecord c)
   selectRep $ do
     provideRep $ defaultLayout $ do
