@@ -5,10 +5,7 @@ module Handler.Home where
 
 import Foundation
 import Yesod.Core
-import CalcStructure
 
-
---import DBConnection
 getHomeR :: Handler Html
 getHomeR = defaultLayout $ do
   setTitle "Haskell Web Calculator API"

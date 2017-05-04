@@ -25,7 +25,7 @@ function setup(){
         route = "/divide/"+op1+"/"+op2;
         break;
       default:
-        throw new Error("Calculation error");
+        throw new Error("Invalid Operator");
       }
     console.log("submission complete");
     window.location.assign("http://localhost:3000"+route);

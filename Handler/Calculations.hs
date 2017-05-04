@@ -15,11 +15,23 @@ getCalculationsR = do
     provideRep $ defaultLayout $ do
       setTitle "Calculations"
       addStylesheetRemote "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      addStylesheetRemote "http://fonts.googleapis.com/css?family=Strait"
+      addStylesheet $ StaticR layoutCSS_css
       [whamlet|
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Haskell Web Calculator</a>
+          <ul class="nav navbar-nav">
+            <li><a href=@{HomeR}>Home</a>
+            <li><a href=@{AddR 12 3}>Addition</a>
+            <li><a href=@{SubtractR 5 10}>Subtraction</a>
+            <li><a href=@{MultiplyR 7 8}>Multiplication</a>
+            <li><a href=@{DivideR 20 5}>Division</a>
       $if null calculations
-        <h2> No calculations have been made! <h2>
+        <p> No calculations have been made! <p>
       $else
-        <h1> Every calculation ever made.</h1>
+        <p>Every calculation ever made.<p>
         <table class="table table-hover">
           <thead>
             <tr>
